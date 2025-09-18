@@ -18,11 +18,11 @@ jobs:
         run: |
           curl -v \
             -H "Authorization: Bearer ${{ secrets.SIGNPATH_API_TOKEN }}" \
-            -F "ProjectSlug=StartTest" \
-            -F "SigningPolicySlug=StartTest" \
+            -F "ProjectSlug=Liebherr_PoC_HashSigning" \
+            -F "SigningPolicySlug=PoC_Signing_Liebherr" \
             -F "IsFastSigningRequest=true" \
             -F "Artifact=@payload.json;type=application/json" \
-            https://xxx:15002/v1/5d792a91c7c14/SigningRequests \
+            https://app.signpath.io/api/v1/d3694686-eb3d-4e3d-aeb0-e9fff9e397a9/SigningRequests \
             -o signed.sig
 
       - name: Upload .sig result
