@@ -1,0 +1,32 @@
+name: Manual Fast Signing via curl
+
+on:
+  workflow_dispatch:
+
+jobs:
+  sign-hash-direct:
+    runs-on: ubuntu-latest  # oder windows-latest, je nach Bedarf
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Show payload.json
+        run: cat payload.json
+
+      - name: Submit Fast Signing Request via curl
+        run: |
+          curl -v \
+            -H "Authorization: Bearer ${{ secrets.SIGNPATH_API_TOKEN }}" \
+            -F "ProjectSlug=StartTest" \
+            -F "SigningPolicySlug=StartTest" \
+            -F "IsFastSigningRequest=true" \
+            -F "Artifact=@payload.json;type=application/json" \
+            https://xxx:15002/v1/5d792a91c7c14/SigningRequests \
+            -o signed.sig
+
+      - name: Upload .sig result
+        uses: actions/upload-artifact@v4
+        with:
+          name: signed-sig
+          path: signed.sig
