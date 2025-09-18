@@ -1,0 +1,9 @@
+{
+    "SignatureAlgorithm": "RsaPkcs1",
+    "RsaHashAlgorithm": "2.16.840.1.101.3.4.2.1",
+    "Base64EncodedHash": "n4bQgYhMfWWaL+qgxVrQFaO/TxsrC4Is0V1sFbDwCgg=",
+    "Metadata":
+    {
+        "CreatingProcess": { "CommandLine": "SampleCommand -SampleArgument", "User": "SampleUser" }
+    }
+}
