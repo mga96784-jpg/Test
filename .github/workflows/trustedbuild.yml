@@ -38,8 +38,5 @@ jobs:
           github-artifact-id: ${{ steps.upload-payload.outputs.artifact-id }}
           wait-for-completion: true
           output-artifact-directory: signed-output
-          parameters: |
-            version: ${{ toJSON(some.userinput) }}
-            myparam: "another param"
 
 
