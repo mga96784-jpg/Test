@@ -28,24 +28,18 @@ jobs:
           name: payload-json
           path: payload.json
 
-      - name: Submit signing request to SignPath
+      - id: optional_step_id
         uses: signpath/github-action-submit-signing-request@v1
         with:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
-          organization-id: 'd3694686-eb3d-4e3d-aeb0-e9fff9e397a9'              # z. B. d3694686-eb3d-4e3d-aeb0-e9fff9e397a9
-          project-slug: 'Liebherr_PoC_HashSigning'            # z. B. my-project
-          signing-policy-slug: 'PoC_Signing_Liebherr'      # z. B. fast-signing
+          organization-id: 'd3694686-eb3d-4e3d-aeb0-e9fff9e397a9'              
+          project-slug: 'Liebherr_PoC_HashSigning'            
+          signing-policy-slug: 'PoC_Signing_Liebherr'      
           github-artifact-id: ${{ steps.upload-payload.outputs.artifact-id }}
           wait-for-completion: true
           output-artifact-directory: signed-output
+          parameters: |
+            version: ${{ toJSON(some.userinput) }}
+            myparam: "another param"
 
-      - name: Zeige signiertes Ergebnis
-        run: |
-          echo "Signiertes Artefakt:"
-          ls -lh signed-output
 
-      - name: Lade signiertes Artefakt hoch (optional)
-        uses: actions/upload-artifact@v4
-        with:
-          name: signed-payload
-          path: signed-output
