@@ -1,4 +1,4 @@
-name: Trusted Signing of payload.json via SignPath
+name: Trusted Signing of dummy.exe via SignPath
 
 on:
   workflow_dispatch:
