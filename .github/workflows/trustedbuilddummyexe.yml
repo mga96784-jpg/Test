@@ -38,3 +38,12 @@ jobs:
           github-artifact-id: ${{ steps.upload-payload.outputs.artifact-id }}
           wait-for-completion: true
           output-artifact-directory: signed-output
+
+      - name: Show signed-output contents
+        run: ls -lh signed-output
+
+      - name: Upload signed artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: signed-output
+          path: signed-output
