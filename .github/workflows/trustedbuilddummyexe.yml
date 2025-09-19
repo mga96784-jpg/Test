@@ -33,8 +33,8 @@ jobs:
         with:
           api-token: ${{ secrets.SIGNPATH_API_TOKEN }}
           organization-id: 'd3694686-eb3d-4e3d-aeb0-e9fff9e397a9'              
-          project-slug: 'Liebherr_PoC_HashSigning'            
-          signing-policy-slug: 'PoC_Signing_Liebherr'      
+          project-slug: 'PoC_HashSigning'            
+          signing-policy-slug: 'PoC_Signing'      
           github-artifact-id: ${{ steps.upload-payload.outputs.artifact-id }}
           wait-for-completion: true
           output-artifact-directory: signed-output
